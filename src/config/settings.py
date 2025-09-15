@@ -129,6 +129,16 @@ STATIC_ROOT = BASE_DIR / 'static'
 if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    USE_X_FORWARDED_HOST = True
+
+    csrf_origins = os.environ.get("CSRF_TRUSTED_ORIGINS", "")
+    if csrf_origins:
+        CSRF_TRUSTED_ORIGINS = [o.strip() for o in csrf_origins.split(",")]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
