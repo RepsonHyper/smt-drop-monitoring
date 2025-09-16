@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
-TEMPLATES[0]["DIRS"] = [BASE_DIR.parent / "templates"]
+TEMPLATES[0]["DIRS"] = [BASE_DIR.parent.parent / "templates"]
 
 if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
